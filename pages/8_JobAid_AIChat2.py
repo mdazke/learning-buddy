@@ -25,14 +25,14 @@ with left_column:
     with open('job_aid.json', 'r') as f:
         job_aid_content = json.load(f)
 
-# Display the content in Streamlit
-st.title(job_aid_content['job_aid']['title'])
-st.write(job_aid_content['job_aid']['introduction'])
+    # Display the content in Streamlit
+    st.title(job_aid_content['job_aid']['title'])
+    st.write(job_aid_content['job_aid']['introduction'])
 
-for section in job_aid_content['job_aid']['sections']:
-    st.subheader(section['header'])
-    for item in section['content']:
-        st.write(f"- {item}")
+    for section in job_aid_content['job_aid']['sections']:
+        st.subheader(section['header'])
+        for item in section['content']:
+            st.write(f"- {item}")
 
 # LLM query section (right column)
 with right_column:
