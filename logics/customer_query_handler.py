@@ -27,6 +27,10 @@ with open(filepath, 'r') as file:
     json_string = file.read()
     dict_of_courses = json.loads(json_string)
 
+# Load the job aid content from the JSON file
+    filepath = './data/job-aid.json'
+    with open(filepath, 'r') as f:
+        job_aid_content = json.load(f)
 
 def identify_category_and_courses(user_message):
     delimiter = "####"
@@ -137,3 +141,16 @@ def process_user_message(user_input):
 
 
     return reply, course_details
+
+def process_user_message2(user_prompt):
+    # Example logic to check for certain keywords in the prompt
+    if "Who" in user_prompt:
+        section = "Who?"
+    elif "When" in user_prompt:
+        section = "When?"
+    # You can expand this with more sophisticated matching
+
+    # Retrieve the section from the JSON file
+    for sec in job_aid_content['job_aid']['sections']:
+        if sec['header'] == section:
+            return sec['content'], None  # Return content for display

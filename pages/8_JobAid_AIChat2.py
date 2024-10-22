@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 # from helper_functions import llm
 from logics.customer_query_handler import process_user_message
+from logics.customer_query_handler import process_user_message2
 from helper_functions.utility import check_password  
 
 # region <--------- Streamlit App Configuration --------->
@@ -49,7 +50,7 @@ with right_column:
 
         st.divider()
 
-        response, course_details = process_user_message(user_prompt)
+        response, course_details = process_user_message2(user_prompt)
         st.write(response)
 
         st.divider()
