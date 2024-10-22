@@ -22,7 +22,7 @@ left_column, right_column = st.columns([2, 1])  # Adjust the ratio for left and 
 # Main content section (left column)
 with left_column:
     # Load the job aid content from the JSON file
-    with open('job_aid.json', 'r') as f:
+    with open('job-aid.json', 'r') as f:
         job_aid_content = json.load(f)
 
     # Display the content in Streamlit
