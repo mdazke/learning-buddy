@@ -144,13 +144,21 @@ def process_user_message(user_input):
 
 def process_user_message2(user_prompt):
     # Example logic to check for certain keywords in the prompt
+    section = None
     if "Who" in user_prompt:
         section = "Who?"
     elif "When" in user_prompt:
         section = "When?"
-    # You can expand this with more sophisticated matching
-
-    # Retrieve the section from the JSON file
-    for sec in job_aid_content['job_aid']['sections']:
-        if sec['header'] == section:
-            return sec['content'], None  # Return content for display
+    elif "Why" in user_prompt:
+        section = "Why?"
+    elif "What" in user_prompt:
+        section = "What?"
+    elif "How" in user_prompt:
+        section = "How?"
+    
+    # Retrieve the section from the job-aid JSON
+    if section:
+        for sec in job_aid_content['job_aid']['sections']:
+            if sec['header'] == section:
+                return sec['content'], None
+    return "No relevant information found in the job aid.", None
