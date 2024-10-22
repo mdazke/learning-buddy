@@ -3,31 +3,53 @@ import streamlit as st
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     layout="centered",
-    page_title="My Streamlit App"
+    page_title="In-source vs Outsource"
 )
 # endregion <--------- Streamlit App Configuration --------->
 
-st.title("Determine Your Procurement Approach")
+# Title and header
+st.title("In-source vs Outsource")
+st.header("Procurement Decision-Making Guide")
 
-#st.write("This is a Streamlit App that demonstrates how to use the OpenAI API to generate text completions.")
+# Introduction
+st.write("""
+Before deciding to outsource or purchase, always consider if the need can be met in-house. 
+Evaluate carefully whether the procurement is necessary and if it is a prudent decision. 
+This guide will walk you through key considerations for making these decisions.
+""")
 
-st.write("In-source vs Outsource")
-st.write("Always consider if the need can be met in-house before deciding to purchase")
-st.write("Evaluate if the purchase is genuinely needed and prudent")
-st.write("Estimated Procurement Value (EPV)")
-st.write("Maximum permissible figure")
-st.write("Calculation: Base + Options + Contingency sum")
-st.write("Minimum Opening Period for ITQ/ITT")
-st.write("Open ITQ: 7 working days")
-st.write("Open ITT (WTO GPA): 25 working days")
-st.write("Open ITT (Non WTO GPA): 14 days")
-st.write("WTO-GPA Tenders")
-st.write("In exceptional circumstances (safety or public interest), minimum period may be reduced to 10 days")
-st.write("Requires prior approval from PS, CEO, or delegated officer")
-st.write("Key Consideration")
-st.write("The complexity of specifications determines the appropriate opening period")
+# Section: In-source vs Outsource
+st.subheader("In-source vs Outsource")
+st.write("""
+- **In-source:** Always consider if the need can be met in-house before deciding to purchase.
+- **Evaluate:** Ensure the purchase is genuinely needed and prudent.
+""")
 
-#with st.expander("How to use this App"):
-    #st.write("1. Enter your prompt in the text area.")
-    #st.write("2. Click the 'Submit' button.")
-    #st.write("3. The app will generate a text completion based on your prompt.")
+# Section: Estimated Procurement Value (EPV)
+st.subheader("Estimated Procurement Value (EPV)")
+st.write("""
+- **Maximum permissible figure:** Ensure the procurement cost stays within the permissible limit.
+- **Calculation:** Base + Options + Contingency sum.
+""")
+
+# Section: Minimum Opening Period for ITQ/ITT
+st.subheader("Minimum Opening Period for ITQ/ITT")
+st.write("""
+- **Open ITQ:** 7 working days.
+- **Open ITT (WTO GPA):** 25 working days.
+- **Open ITT (Non-WTO GPA):** 14 days.
+""")
+
+# Section: WTO-GPA Tenders
+st.subheader("WTO-GPA Tenders")
+st.write("""
+- In exceptional circumstances (e.g., safety or public interest), the minimum period may be reduced to 10 days.
+- Requires prior approval from PS, CEO, or a delegated officer.
+""")
+
+# Key Consideration section
+st.subheader("Key Consideration")
+st.write("""
+The complexity of specifications will determine the appropriate opening period for the procurement. 
+Carefully assess the level of detail and intricacies of the requirements before setting deadlines.
+""")
