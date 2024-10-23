@@ -9,7 +9,7 @@ from helper_functions.utility import check_password
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     layout="wide",  # Set the layout to 'wide' to enable side-by-side columns
-    page_title="Procurement Job Aid"
+    page_title="Learning Buddy"
 )
 # endregion <--------- Streamlit App Configuration --------->
 
