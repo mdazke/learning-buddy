@@ -1,0 +1,24 @@
+{
+    "job_aid": {
+      "title": "Courses Completed",
+      "introduction": "This is the portal of where you can get the resources of all the courses",
+      "sections": [
+        {
+          "header": "Presentations",
+          "content": [
+            "Managing Nerves",
+            "Managing Q&A"
+          ]
+        },
+        {
+          "header": "Procurement",
+          "content": [
+            "What are your critical and non-critical requirements?",
+            "What market research have you done?",
+            "What is the budget?"
+          ]
+        }
+      ]
+    }
+}
+  
