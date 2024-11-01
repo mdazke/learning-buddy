@@ -162,3 +162,36 @@ def process_user_message2(user_prompt):
             if sec['header'] == section:
                 return sec['content'], None
     return "No relevant information found in the job aid.", None
+
+def process_user_message3(user_prompt):
+    
+    delimiter = "####"
+
+    system_message = f"""
+    You are an assistant helping users break down their problems step-by-step.
+    The user message will be enclosed within the delimiter {delimiter}.
+    
+    Analyze the user's message and guide them through three steps:
+    
+    Step 1: Break down the problem into smaller, manageable parts.
+    Step 2: Identify relevant resources from the provided job aid that could assist.
+    Step 3: Suggest applying the resources step-by-step and evaluate the outcomes.
+    
+    Use the following format:
+    Step 1:{delimiter} <Detailed reasoning for Step 1>
+    Step 2:{delimiter} <Identify any relevant resources from job-aid>
+    Step 3:{delimiter} <Provide actionable advice for applying resources>
+    
+    Ensure the response follows the given format, with {delimiter} separating each step.
+    """
+
+    messages =  [
+        {'role':'system',
+         'content': system_message},
+        {'role':'user',
+         'content': f"{delimiter}{user_prompt}{delimiter}"},
+    ]
+
+    response_to_customer = llm.get_completion_by_messages(messages)
+    response_to_customer = response_to_customer.split(delimiter)[-1]
+    return response_to_customer
