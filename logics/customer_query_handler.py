@@ -28,9 +28,9 @@ with open(filepath, 'r') as file:
     dict_of_courses = json.loads(json_string)
 
 # Load the job aid content from the JSON file
-    filepath = './data/job-aid.json'
-    with open(filepath, 'r') as f:
-        job_aid_content = json.load(f)
+filepath = './data/job-aid.json'
+with open(filepath, 'r') as f:
+    job_aid_content = json.load(f)
 
 def identify_category_and_courses(user_message):
     delimiter = "####"
