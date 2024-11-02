@@ -143,8 +143,22 @@ with right_column:
         get_application_ideas()
 
     if st.button("🆘 Ask for Help"):
-        ask_for_help()
-        #st.write("Ask for Help")
+        # ask_for_help()
+        st.write("Ask for Help")
+        ###
+        # Creating a form to capture user input without page refresh
+        # with st.form(key="query_form"):
+        #     st.subheader("I'm here to help! What are you struggling with?")
+        #     user_prompt = st.text_area("Describe your issue", height=200)
+        #     submit_button = st.form_submit_button("Submit")
+        #     print(f"{user_prompt}")
+
+        #     if submit_button:
+        #         st.toast(f"User Input Submitted - {user_prompt}")
+        #         response = process_user_message3(user_prompt)
+        #         st.write(response)
+        #         st.divider()
+        ###
         # form = st.form(key="query_form")
         # form.subheader("I'm here to help! What are you struggling with?")
 
@@ -152,7 +166,7 @@ with right_column:
 
         # if form.form_submit_button("Submit"):
         #     st.toast(f"User Input Submitted - {user_prompt}")
-
+        # print(f"{user_prompt}")
         # st.divider()
 
         # response = process_user_message3(user_prompt)
