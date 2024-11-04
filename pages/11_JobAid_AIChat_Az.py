@@ -187,6 +187,8 @@ with right_column:
        response = process_user_message3(user_prompt)
        st.write(response)
 
+    print("TEST!")
+
     #    st.divider()
 
     #    if course_details:
