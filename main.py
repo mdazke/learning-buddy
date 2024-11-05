@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 # from helper_functions import llm
-from logics.customer_query_handler import process_user_message
+# from logics.customer_query_handler import process_user_message
 from helper_functions.utility import check_password  
 
 # Initialize session state if not already done
@@ -42,13 +42,22 @@ if not check_password():
 
 st.write("This is a proof-of-concept project for the AI Bootcamp Project.")
 
-# Display the buttons
-st.button("Show Message 1", on_click=show_message1)
-st.button("Show Message 2", on_click=show_message2)
-st.button("Show Message 3", on_click=show_message3)
+with st.expander("How to use this App"):
+    st.write("1. Click on Learning Buddy on the left navigation bar.")
+    st.write("2. Choose from the four options that Learning Buddyy offers from the left navigation bar.")
+    st.write("3. Select the Ask for Help option. This is where most of the LLM codes are. This draws from the Job Aid Questions to further help the query. Ask keywords from the Job Aid")
+    st.write("4. Enter your prompt in the text area.")
+    st.write("5. Click the 'Submit' button.")
+    st.write("6. The app will generate a text completion based on your prompt.")
+    st.write("Note: If the app provides a nil return, try to hit submit again.")
 
-# Display the current message
-st.write(st.session_state.message)
+# # Display the buttons
+# st.button("Show Message 1", on_click=show_message1)
+# st.button("Show Message 2", on_click=show_message2)
+# st.button("Show Message 3", on_click=show_message3)
+
+# # Display the current message
+# st.write(st.session_state.message)
 
 # form = st.form(key="form")
 # form.subheader("Prompt")
