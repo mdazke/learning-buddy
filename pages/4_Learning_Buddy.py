@@ -18,6 +18,34 @@ def get_daily_tip():
     daily_tip = random.choice(tips)
     st.write(f"💡 {daily_tip}")
 
+# Initialize session state variables if not already done
+if "current_function" not in st.session_state:
+    st.session_state.current_function = "Review Course Content"
+
+# Load the JSON file
+filepath = './data/course-topics-full.json'
+with open(filepath, 'r') as file:
+    json_string = file.read()
+    dict_of_courses = json.loads(json_string)
+
+# # Functions for each option
+# def review_course_content():
+#     st.subheader("Review Course Content")
+#     st.write("Provide detailed information to help you review your course content.")
+
+# def set_learning_goal():
+#     st.subheader("Set a Learning Goal")
+#     st.write("Set clear and achievable goals for your learning journey.")
+
+# def get_application_ideas():
+#     st.subheader("Get Application Ideas")
+#     st.write("Explore practical ideas to apply your course content effectively.")
+
+# def ask_for_help():
+#     st.subheader("Ask for Help")
+#     st.write("Describe the help you need to overcome learning obstacles.")
+
+
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     layout="wide",  # Set the layout to 'wide' to enable side-by-side columns
@@ -31,7 +59,8 @@ if not check_password():
 
 # Function to handle "Review Course Content"
 def review_course_content():
-    st.write("LearnBuddy: Great! Which topic would you like to review?")
+    st.header("📚 Review Course Content")
+    st.write("🤖 : Great! Which topic would you like to review?")
     # Display a list of course topics
     course_topics = list(dict_of_courses.keys())
     selected_topic = st.selectbox("Select a course topic", course_topics)
@@ -42,7 +71,8 @@ def review_course_content():
 
 # Function to handle "Set a Learning Goal"
 def set_learning_goal():
-    st.write("LearnBuddy: Excellent! What skill from the course would you like to focus on this week?")
+    st.header("🎯 Set a Learning Goal")
+    st.write("🤖 : Excellent! What skill from the course would you like to focus on this week?")
     goal = st.text_input("Enter your learning goal")
     if goal:
         print(f"{goal}")
@@ -57,7 +87,8 @@ def set_learning_goal():
 
 # Function to handle "Get Application Ideas"
 def get_application_ideas():
-    st.write("LearnBuddy: Sure! What's your current task or challenge at work?")
+    st.header("💡 Get Application Ideas")
+    st.write("🤖 : Sure! What's your current task or challenge at work?")
     task = st.text_area("Describe your current task or challenge", height=150)
     if task:
         st.write(f"Based on your course, here are some ways you could apply your learning to '{task}':")
@@ -71,36 +102,21 @@ def get_application_ideas():
 
 # Function to handle "Ask for Help"
 def ask_for_help():
-    st.write("LearnBuddy: I'm here to help! What are you struggling with?")
-    issue = st.text_area("Describe your issue", height=150)
-    if issue:
-        st.write("I understand. Let's approach this step-by-step...")
-        help_steps = [
-            "Step 1: Break down the problem into smaller, manageable parts.",
-            "Step 2: Identify any resources from the course that could assist you.",
-            "Step 3: Apply the resources one at a time and evaluate their effectiveness."
-        ]
-        for step in help_steps:
-            st.write(f"- {step}")
+    st.header("🆘 Ask for Help")
+    st.write("Job Aid: Determining Your Procurement Approach")
+    form = st.form(key="query_form")
+    form.subheader("🤖 : I'm here to help! What are you struggling with?")
 
-    # form = st.form(key="query_form")
-    # form.subheader("Ask a question based on the displayed content")
+    user_prompt = form.text_area("Describe your issue", height=200)
 
-    # user_prompt = form.text_area("Enter your question here", height=200)
+    if form.form_submit_button("Submit"):
+       st.toast(f"User Input Submitted - {user_prompt}")
 
-    # if form.form_submit_button("Submit"):
-    #     st.toast(f"User Input Submitted - {user_prompt}")
+       st.divider()
 
-    #     st.divider()
+       response = process_user_message3(user_prompt)
+       st.write(response)
 
-    #     response, course_details = process_user_message2(user_prompt)
-    #     st.write(response)
-
-    #     st.divider()
-
-    #     if course_details:
-    #         df = pd.DataFrame(course_details)
-    #         st.dataframe(df)
     
 # Creating two columns for main content and LLM query
 left_column, right_column = st.columns([2, 1])  # Adjust the ratio for left and right column sizes
@@ -152,21 +168,21 @@ with right_column:
     st.write("Here's your daily tip:")
     get_daily_tip()
 
-    if st.button("📚 Review Course Content"):
-        st.write("Reviewing Course Content...")
-        #review_course_content()
+    # if st.button("📚 Review Course Content"):
+    #     st.write("Reviewing Course Content...")
+    #     review_course_content()
 
-    if st.button("🎯 Set a Learning Goal"):
-        st.write("Setting a Learning Goal...")
-        set_learning_goal()
+    # if st.button("🎯 Set a Learning Goal"):
+    #     st.write("Setting a Learning Goal...")
+    #     set_learning_goal()
 
-    if st.button("💡 Get Application Ideas"):
-        st.write("Get Application Ideas")
-        get_application_ideas()
+    # if st.button("💡 Get Application Ideas"):
+    #     st.write("Get Application Ideas")
+    #     get_application_ideas()
 
-    if st.button("🆘 Ask for Help"):
-        # ask_for_help()
-        st.write("Ask for Help")
+    # if st.button("🆘 Ask for Help"):
+    #     ask_for_help()
+    #     st.write("Ask for Help")
         ###
         # Creating a form to capture user input without page refresh
         # with st.form(key="query_form"):
@@ -196,21 +212,46 @@ with right_column:
 
         # st.divider()
 
-    form = st.form(key="query_form")
-    form.subheader("I'm here to help! What are you struggling with?")
+    # Sidebar to control which function to show
+    options = [
+        "Review Course Content",
+        "Set a Learning Goal",
+        "Get Application Ideas",
+        "Ask for Help"
+    ]
 
-    user_prompt = form.text_area("Describe your issue", height=200)
+    st.sidebar.header("🤖 : Choose an Option")
+    selected_option = st.sidebar.radio("Select an action:", options)
+    st.session_state.current_function = selected_option
 
-    if form.form_submit_button("Submit"):
-       st.toast(f"User Input Submitted - {user_prompt}")
+    # Display the selected function
+    if st.session_state.current_function == "Review Course Content":
+        review_course_content()
+    elif st.session_state.current_function == "Set a Learning Goal":
+        set_learning_goal()
+    elif st.session_state.current_function == "Get Application Ideas":
+        get_application_ideas()
+    elif st.session_state.current_function == "Ask for Help":
+        ask_for_help()
 
-       st.divider()
+    # User input form for asking for help
+    st.divider()  # Add a divider between the options and the form
 
-       response = process_user_message3(user_prompt)
-       st.write(response)
+    # form = st.form(key="query_form")
+    # form.subheader("I'm here to help! What are you struggling with?")
 
-    print("TEST!")
-    print(course_topics)
+    # user_prompt = form.text_area("Describe your issue", height=200)
+
+    # if form.form_submit_button("Submit"):
+    #    st.toast(f"User Input Submitted - {user_prompt}")
+
+    #    st.divider()
+
+    #    response = process_user_message3(user_prompt)
+    #    st.write(response)
+
+    # print("TEST!")
+    # print(course_topics)
 
     #    st.divider()
 

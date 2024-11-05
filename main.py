@@ -5,6 +5,21 @@ import pandas as pd
 from logics.customer_query_handler import process_user_message
 from helper_functions.utility import check_password  
 
+# Initialize session state if not already done
+if "message" not in st.session_state:
+    st.session_state.message = "Welcome! Click any button to display a message."
+
+# Functions to update the message for each button
+def show_message1():
+    st.session_state.message = "This is the first message!"
+
+def show_message2():
+    st.session_state.message = "This is the second message!"
+
+def show_message3():
+    st.session_state.message = "This is the third message!"
+
+
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     layout="centered",
@@ -26,6 +41,14 @@ if not check_password():
      st.stop()
 
 st.write("This is a proof-of-concept project for the AI Bootcamp Project.")
+
+# Display the buttons
+st.button("Show Message 1", on_click=show_message1)
+st.button("Show Message 2", on_click=show_message2)
+st.button("Show Message 3", on_click=show_message3)
+
+# Display the current message
+st.write(st.session_state.message)
 
 # form = st.form(key="form")
 # form.subheader("Prompt")

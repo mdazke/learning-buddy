@@ -1,0 +1,129 @@
+{
+    "Principles of Procurement": 
+      {
+        "title": "Principles of Procurement",
+        "subtopics": [
+            {
+              "Transparency": [
+                "We subscribe to an open and transparent procurement regime across all stages of the procurement lifecycle. The government's procurement objectives, criteria and procedures would as far as possible be made known to suppliers."
+              ]
+            },
+            {
+              "Open and Fair Competition": [
+                "An open and competitive environment will encourage suppliers to give their best offers. Suppliers are given equitable access opportunities and compete on a level playing field."
+              ]
+            },
+            {
+              "Value for Money in Procurement": [
+                "Government will procure from sources that can best meet its requirements and which offer the best value.",
+                "Value for money is derived from the optimal balance of benefits and costs which takes into account factors such as, but not limited to, suitability for the intended purpose, quality and reliability of the goods or service, innovation and adaptability, sustainability, total cost of ownership, and where appropriate, may also include the achievement of economic, social and environmental objectives.",
+                "Value for money also includes adoption of appropriate procurement approaches and processes that are effective and efficient, for example procurement processes that are proportional to the value and risks involved, taking account of implementation capacity, time constraints and cost effectiveness.",
+                "As such, value for money does not necessarily mean that a tender must be awarded to the lowest bidder."
+              ]
+            }
+        ]
+      },"Applying Design Thinking to AOR": 
+      {
+        "title": "Applying Design Thinking to AOR",
+        "subtopics": [
+          { 
+              "Using Design Thinking Tools for Procurement": [
+                  "Use design thinking tools to help you plan your next procurement"
+              ]
+          },
+          { 
+              "Supporting End Users with Empathic Solutions": [
+                  "In Procurement, everything we do involves considering how we can support our 'end users' with an empathic perspective to solve real problems for the business"
+              ]
+          },
+          {
+            "Design Thinking Principles": [
+              "Human Centric",
+              "Creative and Playful",
+              "Iterative",
+              "Collaborative",
+              "Prototype Driven"
+            ]
+          }
+        ]
+      },"Evaluation and Award": 
+      {
+        "title": "Evaluation and Award",
+        "subtopics": [
+          {
+            "What is Evaluation": [
+              "Evaluation is a process that enables selection of the most appropriate and best value offer.",
+              "Evaluation and recommendation of award is carried out by one or more distinct officers."
+            ]
+          },
+          {
+            "Bid Corrections": [
+              "GPEs shall highlight the corrections made and the recommendations for accepting the corrected bid in the evaluation report/Tender Recommendation Report to the Quotation Approving Authority (QAA)/ Tender Approving Authority (TAA) for their final award decision.",
+              "Should the QAA/TAA disagree with the evaluation officer(s) decision, the evaluation officer(s) will be required to review their evaluation based on whatever corrections QAA/TAA agree with."
+            ]
+          }
+        ]
+      },"Strategising a Procurement": 
+      {
+        "title": "Strategising a Procurement",
+        "subtopics": [
+          "Budget Planning",
+          "Solution Consideration",
+          "Market Research for EPV",
+          "Specification and Evaluation Criteria",
+          "Go-To-Market and Proposal Evaluation",
+          "Key Concerns in Each Step"
+        ]
+      },"Contract Management": 
+      {
+        "title": "Contract Management",
+        "subtopics": [
+          "Contract Management are grouped into 3 main areas: Delivery Management, Relationship Management, Contract Administration",
+          {
+            "Delivery Management": [
+              "Delivery to the specifications as stated in the contract.",
+              "Include checking the nature, quantity and quality of goods supplied, works carried out or services performed."
+            ]
+          },
+          {
+            "Relationship Management": [
+              "Keep the relationship between the supplier and organization open and constructive.",
+              "Professional throughout to manage issues and resolve disputes."
+            ]
+          },
+          {
+            "Contract Administration": [
+              "Formal Governance of Contracts",
+              "Include payment milestones, exercising options and liquidated damages."
+            ]
+          },
+          {
+            "Stage 8 Managing Contract Rules": [
+              "Monitoring Contract Performance",
+              "Contracts Variation",
+              "Novation",
+              "Security Deposit",
+              "Handling Poor Performing Contractors",
+              "Contract Termination",
+              "Contract Review",
+              "Debarment of Contractors",
+              "Curtailment of Contracts",
+              "Bonus Scheme for Construction Quality (BSCQ)",
+              "Managing Contracts with SOR and Star Rate Items"
+            ]
+          }
+        ]
+      },"Contracts Variation": 
+      {
+        "title": "Contracts Variation",
+        "subtopics": [
+          "Changes made to the contract after a tender or quotation is awarded, including additions or omissions, are considered contract variations (CV).",
+          "CVs can be made for minor changes in scope to the contract. If the CVs are substantial, fresh tenders should be considered for the additional works/services.",
+          "CVs must be formally executed with a CV agreement with the contractor.",
+          "The approving authority to approve a CV shall be determined by the value and scope of the CV.",
+          "In order to help approving authorities make informed  decisions, the current Good Practice Guide on including past approved contract variations and the balance of the contingency sum when seeking approval for contract variations, is now a Rule."
+        ]
+      }
+    
+  }
+  
