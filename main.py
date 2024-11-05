@@ -25,22 +25,24 @@ with st.expander("Click to Expand"):
 if not check_password():  
      st.stop()
 
-form = st.form(key="form")
-form.subheader("Prompt")
+st.write("This is a proof-of-concept project for the AI Bootcamp Project.")
 
-user_prompt = form.text_area("Enter your prompt here", height=200)
+# form = st.form(key="form")
+# form.subheader("Prompt")
 
-if form.form_submit_button("Submit"):
+# user_prompt = form.text_area("Enter your prompt here", height=200)
+
+# if form.form_submit_button("Submit"):
     
-    st.toast(f"User Input Submitted - {user_prompt}")
+#     st.toast(f"User Input Submitted - {user_prompt}")
 
-    st.divider()
+#     st.divider()
 
-    response, course_details = process_user_message(user_prompt)
-    st.write(response)
+#     response, course_details = process_user_message(user_prompt)
+#     st.write(response)
 
-    st.divider()
+#     st.divider()
 
-    print(course_details)
-    df = pd.DataFrame(course_details)
-    df 
+#     print(course_details)
+#     df = pd.DataFrame(course_details)
+#     df 

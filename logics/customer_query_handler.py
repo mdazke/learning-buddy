@@ -242,13 +242,13 @@ def generate_response_based_on_question(user_message, product_details):
     delimiter = "####"
 
     system_message = f"""
-    Follow these steps to answer the customer queries.
-    The customer query will be delimited with a pair {delimiter}.
+    Follow these steps to answer the learner queries.
+    The learner query will be delimited with a pair {delimiter}.
 
-    Step 1:{delimiter} If the user is asking about procurement, \
+    Step 1:{delimiter} If the learner is asking about procurement, \
     understand the relevant question(s) from the following list.
     All available questions shown in the json data below:
-    {product_details}
+    {product_details} If the list is empty, reply as no relevant content was found.
 
     Step 2:{delimiter} Use the information about the question to \
     generate the answer for the customer's query.
