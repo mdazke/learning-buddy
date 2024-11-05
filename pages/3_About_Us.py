@@ -15,3 +15,6 @@ with st.expander("How to use this App"):
     st.write("1. Enter your prompt in the text area.")
     st.write("2. Click the 'Submit' button.")
     st.write("3. The app will generate a text completion based on your prompt.")
+
+# Display a local image
+st.image("./image/image.jpg", caption="Your Image Caption", use_column_width=True)
