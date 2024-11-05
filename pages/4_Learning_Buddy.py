@@ -4,7 +4,7 @@ import pandas as pd
 import random
 # from helper_functions import llm
 # from logics.customer_query_handler import process_user_message
-from logics.customer_query_handler import process_user_message3
+from logics.customer_query_handler import process_user_message3, process_user_message6, process_user_message7
 from helper_functions.utility import check_password  
 
 # Function to generate a "Daily Tip"
@@ -60,19 +60,22 @@ if not check_password():
 # Function to handle "Review Course Content"
 def review_course_content():
     st.header("📚 Review Course Content")
-    st.write("🤖 : Great! Which topic would you like to review?")
+    st.subheader("🤖 : Great! Which topic would you like to review?")
     # Display a list of course topics
     course_topics = list(dict_of_courses.keys())
     selected_topic = st.selectbox("Select a course topic", course_topics)
     if selected_topic:
         st.write(f"You selected: {selected_topic}")
         course_details = dict_of_courses.get(selected_topic, "Course details not found.")
+        response = process_user_message7(course_details)
+        st.write(response)
+        st.divider()
         st.write(course_details)
 
 # Function to handle "Set a Learning Goal"
 def set_learning_goal():
     st.header("🎯 Set a Learning Goal")
-    st.write("🤖 : Excellent! What skill from the course would you like to focus on this week?")
+    st.subheader("🤖 : Excellent! What skill from the course would you like to focus on this week?")
     goal = st.text_input("Enter your learning goal")
     if goal:
         print(f"{goal}")
@@ -88,17 +91,29 @@ def set_learning_goal():
 # Function to handle "Get Application Ideas"
 def get_application_ideas():
     st.header("💡 Get Application Ideas")
-    st.write("🤖 : Sure! What's your current task or challenge at work?")
-    task = st.text_area("Describe your current task or challenge", height=150)
-    if task:
-        st.write(f"Based on your course, here are some ways you could apply your learning to '{task}':")
-        ideas = [
-            "Idea 1: Apply the key concepts to solve your problem.",
-            "Idea 2: Use techniques from the course to enhance your work output.",
-            "Idea 3: Collaborate with colleagues and share your insights."
-        ]
-        for idea in ideas:
-            st.write(f"- {idea}")
+    # st.write("🤖 : Sure! What's your current task or challenge at work?")
+    # task = st.text_area("Describe your current task or challenge", height=150)
+    # if task:
+    #     st.write(f"Based on your course, here are some ways you could apply your learning to '{task}':")
+    #     ideas = [
+    #         "Idea 1: Apply the key concepts to solve your problem.",
+    #         "Idea 2: Use techniques from the course to enhance your work output.",
+    #         "Idea 3: Collaborate with colleagues and share your insights."
+    #     ]
+    #     for idea in ideas:
+    #         st.write(f"- {idea}")
+    form = st.form(key="query_form")
+    form.subheader("🤖 : Sure! What's your current task or challenge at work?")
+
+    user_prompt = form.text_area("Describe your current task or challenge", height=200)
+
+    if form.form_submit_button("Submit"):
+       st.toast(f"User Input Submitted - {user_prompt}")
+
+       st.divider()
+
+       response = process_user_message6(user_prompt)
+       st.write(response)
 
 # Function to handle "Ask for Help"
 def ask_for_help():

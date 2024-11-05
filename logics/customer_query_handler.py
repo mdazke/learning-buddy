@@ -170,6 +170,43 @@ def identify_questions(user_message):
     questions_response = json.loads(questions_response_str)
     return questions_response    
 
+def identify_topics(user_message):
+    delimiter = "####"
+
+    system_message = f"""
+    You will be provided with user queries. \
+    The user query will be enclosed in
+    the pair of {delimiter}.
+
+    Decide if the query is relevant to any specific topics
+    in the Python dictionary below, which each key is a `title`
+    and the value is a list of `subtopics`.
+
+    If there are any relevant topic(s) found, output the pair(s) of a) `subtopics` the relevant topic and b) the associated `title` into a
+    list of dictionary object, where each item in the list is a relevant topic
+    and each topic is a dictionary that contains two keys:
+    1) title
+    2) subtopics
+
+    {course_topics}
+
+    If are no relevant topics are found, output an empty list.
+
+    Ensure your response contains only the list of dictionary objects or an empty list, \
+    without any enclosing tags or delimiters.
+    """
+
+    messages =  [
+        {'role':'system',
+         'content': system_message},
+        {'role':'user',
+         'content': f"{delimiter}{user_message}{delimiter}"},
+    ]
+    topics_response_str = llm.get_completion_by_messages(messages)
+    topics_response_str = topics_response_str.replace("'", "\"")
+    topics_response = json.loads(topics_response_str)
+    return topics_response    
+
 # def get_course_details(list_of_relevant_category_n_course: list[dict]):
 #     course_names_list = []
 #     for x in list_of_relevant_category_n_course:
@@ -251,15 +288,109 @@ def generate_response_based_on_question(user_message, product_details):
     {product_details} If the list is empty, reply as no relevant content was found.
 
     Step 2:{delimiter} Use the information about the question to \
-    generate the answer for the customer's query.
+    generate the answer for the learner's query.
     You must only rely on the facts or information in the question information.
     Your response should be as detail as possible and \
-    include information that is useful for customer to better understand the question.
+    include information that is useful for learner to better understand the question.
 
-    Step 3:{delimiter}: Answer the customer in a friendly tone.
+    Step 3:{delimiter}: Answer the learner in a friendly tone.
     Make sure the statements are factually accurate.
     Your response should be comprehensive and informative to help the \
-    the customers to make their decision.
+    the learners to make their decision.
+    Complete with details such how it can be applied back at the workplace.
+    Use Neural Linguistic Programming to construct your response.
+
+    Use the following format:
+    Step 1:{delimiter} <step 1 reasoning>
+    Step 2:{delimiter} <step 2 reasoning>
+    Step 3:{delimiter} <step 3 response to customer>
+
+    Make sure to include {delimiter} to separate every step.
+    """
+
+    messages =  [
+        {'role':'system',
+         'content': system_message},
+        {'role':'user',
+         'content': f"{delimiter}{user_message}{delimiter}"},
+    ]
+
+    response_to_customer = llm.get_completion_by_messages(messages)
+    response_to_customer = response_to_customer.split(delimiter)[-1]
+    return response_to_customer
+
+def generate_response_based_on_application(user_message, product_details):
+    delimiter = "####"
+
+    system_message = f"""
+    Follow these steps to answer the learner queries.
+    The learner query will be delimited with a pair {delimiter}.
+
+    Step 1:{delimiter} If the learner is asking about procurement, \
+    understand the relevant question(s) from the following list.
+    All available questions shown in the json data below:
+    {product_details} If the list is empty, reply as no relevant content was found.
+
+    Step 2:{delimiter} Use the information about the topic to \
+    generate the answer for the learner's query.
+    You must only rely on the facts or information in the question information.
+    Your response should be as detail as possible and \
+    include information that is useful for learner to better understand the topic.
+
+    Step 3:{delimiter}: Answer the learner in a friendly tone.
+    Make sure the statements are factually accurate.
+    Your response should be comprehensive and informative to help the \
+    the learners to make their decision.
+    Complete with details such how it can be applied back at the workplace.
+    Use Neural Linguistic Programming to construct your response.
+
+    Use the following format:
+    Step 1:{delimiter} <step 1 reasoning>
+    Step 2:{delimiter} <step 2 reasoning>
+    Step 3:{delimiter} <step 3 response to customer>
+
+    Make sure to include {delimiter} to separate every step.
+    """
+
+    messages =  [
+        {'role':'system',
+         'content': system_message},
+        {'role':'user',
+         'content': f"{delimiter}{user_message}{delimiter}"},
+    ]
+
+    response_to_customer = llm.get_completion_by_messages(messages)
+    response_to_customer = response_to_customer.split(delimiter)[-1]
+    return response_to_customer
+
+def generate_response_based_on_topic(user_message, product_details):
+    delimiter = "####"
+
+    system_message = f"""
+    You are reviewing the learner query that will be delimited with a a pair {delimiter}. 
+    Your goal is to help the learner by summarizing the key concepts and breaking \
+    them down further in a way that is easily understood. Use the information provided in \
+    {product_details} to guide your explanation. If needed, provide real-world \
+    examples to clarify the concepts and explain how they can be applied in \
+    the workplace. Keep your tone friendly and engaging.
+    Follow these steps to answer the learner queries.
+
+    Step 1:{delimiter} If the learner is asking about procurement, \
+    understand the relevant question(s) from the following list.
+    All available questions shown in the json data below:
+    {product_details} If the list is empty, reply as no relevant content was found.
+
+    Step 2:{delimiter} Use the information about the topic to \
+    generate the answer for the learner's query. Create a summary of key concepts.
+    You must only rely on the facts or information in the question information.
+    Your response should be as detail as possible and \
+    include information that is useful for learner to better understand the topic. \
+    Provide practical examples on how it can applied back at the workplace.
+
+    Step 3:{delimiter}: Answer the learner in a friendly tone.
+    Make sure the statements are factually accurate.
+    Your response should be comprehensive and informative to help the \
+    the learners to make their decision.
     Complete with details such how it can be applied back at the workplace.
     Use Neural Linguistic Programming to construct your response.
 
@@ -305,7 +436,7 @@ def generate_response_based_on_question(user_message, product_details):
 def process_user_message3(user_input):
     delimiter = "```"
 
-    print("json :", job_aid_content)
+    # print("json :", job_aid_content)
 
     # Process 1: If Questions are found, look them up
     questions_name = identify_questions(user_input)
@@ -321,6 +452,46 @@ def process_user_message3(user_input):
 
 
     return reply, questions_name
+
+def process_user_message6(user_input):
+    delimiter = "```"
+
+    # print("json :", job_aid_content)
+
+    # Process 1: If Topics are found, look them up
+    topics_name = identify_topics(user_input)
+    print("topics_name : ", topics_name)
+
+    # Process 2: Get the Question Details
+    question_details = get_question_details(topics_name)
+    print("question_detail : ", question_details)
+
+    # Process 3: Generate Response based on Question
+    reply = generate_response_based_on_application(user_input, topics_name)
+    print("reply : ", reply)
+
+
+    return reply, topics_name
+
+def process_user_message7(user_input):
+    delimiter = "```"
+
+    # print("json :", job_aid_content)
+
+    # Process 1: If Topics are found, look them up
+    topics_name = identify_topics(user_input)
+    print("topics_name : ", topics_name)
+
+    # Process 2: Get the Question Details
+    question_details = get_question_details(topics_name)
+    print("question_detail : ", question_details)
+
+    # Process 3: Generate Response based on Question
+    reply = generate_response_based_on_topic(user_input, topics_name)
+    print("reply : ", reply)
+
+
+    return reply, topics_name
 
 # def process_user_message2(user_prompt):
 #     # Example logic to check for certain keywords in the prompt
