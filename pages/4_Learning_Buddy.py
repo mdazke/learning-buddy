@@ -10,7 +10,7 @@ from helper_functions.utility import check_password
 # Function to generate a "Daily Tip"
 def get_daily_tip():
     tips = [
-        "Tip💡: Consistency is key! Dedicate a small amount of time each day to your learning.",
+        "Tip: Consistency is key! Dedicate a small amount of time each day to your learning.",
         "Tip: Don't be afraid to ask for feedback from colleagues to improve your skills.",
         "Tip: Apply what you learn in real-world scenarios to make it stick.",
         "Tip: Take regular breaks to keep your mind fresh and focused."
