@@ -108,10 +108,32 @@ left_column, right_column = st.columns([2, 1])  # Adjust the ratio for left and 
 # Main content section (left column)
 with left_column:
     # Load the job aid content from the JSON file
+    filepath = './data/course-topics.json'
+    with open(filepath, 'r') as file:
+        course_topics = json.load(file)
+
+    # Load the job aid content from the JSON file
     filepath = './data/job-aid.json'
     with open(filepath, 'r') as f:
         job_aid_content = json.load(f)
 
+    # Display the course topics
+    for topic in course_topics["courseTopics"]:
+        st.divider()
+        st.header(topic["title"])
+        for subtopic in topic["subtopics"]:
+            if isinstance(subtopic, dict):
+                # If subtopic is a dictionary, iterate over its items
+                for key, values in subtopic.items():
+                    st.subheader(key)
+                    for value in values:
+                        st.write(f"- {value}")
+            else:
+                # If subtopic is a string, display it directly
+                st.write(f"- {subtopic}")
+
+    st.divider()
+    
     # Display the content in Streamlit
     st.title(job_aid_content['job_aid']['title'])
     st.write(job_aid_content['job_aid']['introduction'])
@@ -188,6 +210,7 @@ with right_column:
        st.write(response)
 
     print("TEST!")
+    print(course_topics)
 
     #    st.divider()
 

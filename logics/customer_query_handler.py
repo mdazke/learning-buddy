@@ -45,6 +45,44 @@ questions_dict = {
     ]
 }
 
+course_topics = {
+  "Principles of Procurement": [
+    "Transparency in Procurement",
+    "Open and Fair Competition",
+    "Value for Money in Procurement"
+  ],
+  "Applying Design Thinking to AOR": [
+    "Using Design Thinking Tools for Procurement",
+    "Supporting End Users with Empathic Solutions",
+    "Design Thinking Principles: Human Centric, Creative and Playful, Iterative, Collaborative, Prototype Driven"
+  ],
+  "Evaluation and Award": [
+    "Evaluation Process: Definition and Importance, Distinct Officer Roles",
+    "Bid Corrections: Highlighting Corrections and Recommendations, Handling Disagreements with QAA/TAA"
+  ],
+  "Strategising a Procurement": [
+    "Budget Planning",
+    "Solution Consideration",
+    "Market Research for EPV",
+    "Specification and Evaluation Criteria",
+    "Go-To-Market and Proposal Evaluation",
+    "Key Concerns in Each Step"
+  ],
+  "Contract Management": [
+    "Delivery Management: Delivery to Contract Specifications, Checking Goods and Services Quality",
+    "Relationship Management: Maintaining Open and Constructive Relationships, Managing Issues and Disputes Professionally",
+    "Contract Administration: Formal Governance of Contracts, Managing Payment Milestones and Options",
+    "Stage 8 Managing Contract Rules: Monitoring Contract Performance, Contracts Variation, Novation, Security Deposit, Handling Poor Performing Contractors, Contract Termination, Contract Review, Debarment of Contractors, Curtailment of Contracts, Bonus Scheme for Construction Quality (BSCQ), Managing Contracts with SOR and Star Rate Items"
+  ],
+  "Contracts Variation": [
+    "Definition and Types of Contract Variations",
+    "Minor vs. Substantial Scope Changes",
+    "Formal Execution of Contract Variations",
+    "Role of Approving Authorities",
+    "Good Practice Guide for Approving Variations"
+  ]
+}
+
 
 # Load the JSON file
 filepath = './data/courses-full.json'
