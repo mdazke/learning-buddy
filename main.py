@@ -14,6 +14,13 @@ st.set_page_config(
 
 st.title("Streamlit App")
 
+# Create an expander
+with st.expander("Click to Expand"):
+    st.title("IMPORTANT NOTICE: This web application is developed as a proof-of-concept prototype.")
+    st.write("The information provided here is NOT intended for actual usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.")
+    st.write("Furthermore, please be aware that the LLM may generate inaccurate or incorrect information. You assume full responsibility for how you use any generated output.")
+    st.write("Always consult with qualified professionals for accurate and personalized advice.")
+
 # Check if the password is correct.  
 if not check_password():  
      st.stop()
