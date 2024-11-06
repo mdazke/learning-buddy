@@ -45,10 +45,12 @@ st.write("This is a proof-of-concept project for the AI Bootcamp Project.")
 with st.expander("How to use this App"):
     st.write("1. Click on Learning Buddy on the left navigation bar.")
     st.write("2. Choose from the four options that Learning Buddyy offers from the left navigation bar.")
-    st.write("3. Select the Ask for Help option. This is where most of the LLM codes are. This draws from the Job Aid Questions to further help the query. Ask keywords from the Job Aid")
-    st.write("4. Enter your prompt in the text area.")
-    st.write("5. Click the 'Submit' button.")
-    st.write("6. The app will generate a text completion based on your prompt.")
+    st.write("3. Select either Review Course Content, Get Application Ideas or the Ask for Help option. This is where most of the LLM codes are.") 
+    st.write("4. This draws from either the content or Job Aid Questions to further help the query.")
+    st.write("5. Ask keywords from the Content(i.e. Contract Variation, Transparency)/ Job Aid (i.e Market Research, Suppliers)")
+    st.write("6. Enter your prompt in the text area.")
+    st.write("7. Click the 'Submit' button.")
+    st.write("8. The app will generate a text completion based on your prompt.")
     st.write("Note: If the app provides a nil return, try to hit submit again.")
 
 # # Display the buttons
