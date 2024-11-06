@@ -17,7 +17,7 @@ if not check_password():
     st.stop()
 
 # Display a local image
-st.image("./image/workflow.png", caption="Workflow", use_column_width=True)
+st.image("./image/workflow2.png", caption="Workflow", use_column_width=True)
 
 st.header("Implementation Details")
 
