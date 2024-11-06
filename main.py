@@ -51,7 +51,7 @@ with st.expander("How to use this App"):
     st.write("6. Enter your prompt in the text area.")
     st.write("7. Click the 'Submit' button.")
     st.write("8. The app will generate a text completion based on your prompt.")
-    st.write("Note: If the app provides a nil return, try to hit submit again.")
+    st.write("Note: If the app provides a nil return, try to hit submit again or re-select a differnt option. We seek your patience as it's only a prototype.")
 
 # # Display the buttons
 # st.button("Show Message 1", on_click=show_message1)
